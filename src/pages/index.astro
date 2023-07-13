@@ -1,125 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import HeroSection from '../components/HeroSection.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
 ---
 
 <Layout>
+	<Header />
 	<main class="container mx-auto max-w-4xl p-4">
 		<HeroSection />
-		<section class="flex flex-col items-start justify-center gap-4 py-4">
-			<h2 class="mb-8 py-3 text-2xl font-semibold underline">My last projects</h2>
-			<article
-				class="flex flex-col items-start justify-center rounded-lg border border-transparent p-4 transition ease-in-out hover:shadow dark:hover:border-gray-50"
-			>
-				<a
-					href="https://fial-app.vercel.app/ "
-					target="_blank"
-					rel="noopener noreferrer"
-					class="mb-4 w-full"
-				>
-					<div class="flex flex-row items-start justify-start gap-4">
-						<div class="aspect-video w-52 rounded-lg bg-black"></div>
-						<div class="flex w-full flex-1 flex-col items-start justify-center">
-							<h3 class="mb-4 text-xl font-semibold">FialApp</h3>
-							<p class="mb-4">
-								Fial is a web app that allows you to create and share your own recipes. It was built
-								with React, Next.js, Tailwind CSS and Firebase.
-							</p>
-							<div class="flex flex-row items-center justify-start">
-								<p class="mr-4">React</p>
-								<p class="mr-4">Next.js</p>
-								<p class="mr-4">Tailwind CSS</p>
-								<p class="mr-4">Firebase</p>
-							</div>
-						</div>
-					</div>
-				</a>
-			</article>
-			<article
-				class="flex flex-col items-start justify-center rounded-lg border border-transparent p-4 transition ease-in-out hover:shadow dark:hover:border-gray-50"
-			>
-				<a
-					href="https://fial-app.vercel.app/ "
-					target="_blank"
-					rel="noopener noreferrer"
-					class="mb-4 w-full"
-				>
-					<div class="flex flex-row items-start justify-start gap-4">
-						<div class="aspect-video w-52 rounded-lg bg-black"></div>
-						<div class="flex w-full flex-1 flex-col items-start justify-center">
-							<h3 class="mb-4 text-xl font-semibold">FialApp</h3>
-							<p class="mb-4">
-								Fial is a web app that allows you to create and share your own recipes. It was built
-								with React, Next.js, Tailwind CSS and Firebase.
-							</p>
-							<div class="flex flex-row items-center justify-start">
-								<p class="mr-4">React</p>
-								<p class="mr-4">Next.js</p>
-								<p class="mr-4">Tailwind CSS</p>
-								<p class="mr-4">Firebase</p>
-							</div>
-						</div>
-					</div>
-				</a>
-			</article>
-			<article
-				class="flex flex-col items-start justify-center rounded-lg border border-transparent p-4 transition ease-in-out hover:shadow dark:hover:border-gray-50"
-			>
-				<a
-					href="https://fial-app.vercel.app/ "
-					target="_blank"
-					rel="noopener noreferrer"
-					class="mb-4 w-full"
-				>
-					<div class="flex flex-row items-start justify-start gap-4">
-						<div class="aspect-video w-52 rounded-lg bg-black"></div>
-						<div class="flex w-full flex-1 flex-col items-start justify-center">
-							<h3 class="mb-4 text-xl font-semibold">FialApp</h3>
-							<p class="mb-4">
-								Fial is a web app that allows you to create and share your own recipes. It was built
-								with React, Next.js, Tailwind CSS and Firebase.
-							</p>
-							<div class="flex flex-row items-center justify-start">
-								<p class="mr-4">React</p>
-								<p class="mr-4">Next.js</p>
-								<p class="mr-4">Tailwind CSS</p>
-								<p class="mr-4">Firebase</p>
-							</div>
-						</div>
-					</div>
-				</a>
-			</article>
-			<p class="mb-4">
-				You can find more of my projects on{' '}
-				<a
-					href="https://www.github.com/franco14lorenzo"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="hover:underline"
-				>
-					GitHub</a
-				>
-			</p>
-		</section>
-		<footer
-			class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-20 text-center align-top text-gray-500 sm:flex-row sm:justify-between sm:text-xs"
-		>
-			<div class="me-0 sm:me-4">
-				Copyright © 2023<span class="ml-2" aria-label="rocket emoji">🚀</span>
-				Franco Lorenzo
-			</div><nav
-				aria-label="More on this site"
-				class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
-			>
-				<a href="/" class="sm:hover:text-textColor px-4 py-2 sm:px-2 sm:py-0 sm:hover:underline"
-					>Home</a
-				><a
-					href="/about/"
-					class="sm:hover:text-textColor px-4 py-2 sm:px-2 sm:py-0 sm:hover:underline">About</a
-				><a
-					href="/cv/"
-					class="sm:hover:text-textColor px-4 py-2 sm:px-2 sm:py-0 sm:hover:underline">CV</a>
-			</nav>
-		</footer>
 	</main>
+	<Footer />
 </Layout>
