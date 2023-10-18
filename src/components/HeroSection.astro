@@ -1,39 +1,53 @@
-<section class="flex flex-col items-start justify-center py-16">
-  <img src="/img/profile.webp" alt="Franco Lorenzo" class="mx-auto h-32 w-32 rounded-full" />
+---
+import { Image } from 'astro:assets'
+import franco from '../assets/images/franco.webp'
+---
 
-  <article class="my-4 flex w-full flex-col items-center justify-center text-center">
-    <p class="mb-2 py-1 text-sm font-light">Hello world! 👋🏻</p>
-    <h1
-      class="mb-4 bg-gradient-to-b from-gray-900 to-gray-600 bg-clip-text text-5xl font-bold text-transparent dark:from-gray-100 dark:to-gray-400"
-    >
-      I'm Franco Lorenzo
-    </h1>
-    <h2 class="mb-8 py-3 text-2xl font-light tracking-widest">Frontend Engineer</h2>
-    <p class="mb-8 max-w-[60ch] text-gray-600 dark:text-gray-400" style="text-wrap: balance;">
-      I'm passionate about creating products from scratch with a UX-first approach and writing
-      clean, maintainable, and scalable code. I'm always eager to explore new technologies and stay
-      up-to-date with the latest trends in the field.
-    </p>
-    <a
-      href="https://github.com/franco14lorenzo?tab=repositories"
-      target="_blank"
-      class="mt-4 flex items-center justify-center gap-2 rounded-md border border-gray-200 bg-gray-50 px-8 py-4 transition-all hover:underline hover:brightness-200 dark:border-gray-50/10 dark:bg-gray-800"
-    >
-      <span class="font-light">Latest projects</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="h-5 w-5"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-        ></path>
-      </svg>
-    </a>
-  </article>
+<section class="flex flex-col items-start justify-center py-16">
+	<Image
+		src={franco}
+		alt="A picture of Franco Lorenzo"
+		class="mx-auto h-32 w-32 overflow-hidden rounded-full"
+		width="256"
+		height="256"
+		loading="eager"
+		quality="max"
+		draggable="false"
+	/>
+
+	<article class="my-4 flex w-full flex-col items-center justify-center text-center">
+		<p class="mb-2 py-1 text-sm font-light">Hello world! 👋🏻</p>
+		<h1
+			class="mb-4 bg-gradient-to-b from-gray-900 to-gray-600 bg-clip-text text-5xl font-bold text-transparent dark:from-gray-100 dark:to-gray-400"
+		>
+			I'm Franco Lorenzo
+		</h1>
+		<h2 class="mb-8 py-3 text-2xl font-light tracking-widest">Frontend Engineer</h2>
+		<p class="mb-8 max-w-[60ch] text-gray-600 dark:text-gray-400" style="text-wrap: balance;">
+			I'm passionate about creating products from scratch with a UX-first approach and writing
+			clean, maintainable, and scalable code. I'm always eager to explore new technologies and stay
+			up-to-date with the latest trends in the field.
+		</p>
+		<a
+			href="https://github.com/franco14lorenzo?tab=repositories"
+			target="_blank"
+			class="mt-4 flex items-center justify-center gap-2 rounded-md border border-gray-200 bg-gray-50 px-8 py-4 transition-all hover:underline hover:brightness-200 dark:border-gray-50/10 dark:bg-gray-800"
+		>
+			<span class="font-light">Latest projects</span>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="h-5 w-5"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+				></path>
+			</svg>
+		</a>
+	</article>
 </section>
