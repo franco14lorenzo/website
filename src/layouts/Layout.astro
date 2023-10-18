@@ -1,6 +1,8 @@
 ---
 import '@fontsource-variable/outfit';
 import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
 ---
 
 <!DOCTYPE html>
@@ -9,6 +11,10 @@ import BaseHead from '../components/BaseHead.astro';
 		<BaseHead title='Franco Lorenzo | Website' description='Full Stack Developer from Argentina' />
 	</head>
 	<body class="font-sans bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100 container mx-auto max-w-4xl px-4 flex flex-col bg-dotted-gray-200 dark:bg-dotted-gray-50/10 bg-dotted-spacing-6">
+		<Header />
+		<main class="container mx-auto max-w-4xl p-4 pt-20">
 		<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
