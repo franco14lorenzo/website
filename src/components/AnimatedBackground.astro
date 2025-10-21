@@ -1,0 +1,83 @@
+---
+// Animated background component with CSS-based particles for better performance
+---
+
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+	<!-- Floating particles -->
+	<div class="absolute inset-0">
+		<div class="particle particle-1"></div>
+		<div class="particle particle-2"></div>
+		<div class="particle particle-3"></div>
+		<div class="particle particle-4"></div>
+		<div class="particle particle-5"></div>
+		<div class="particle particle-6"></div>
+		<div class="particle particle-7"></div>
+		<div class="particle particle-8"></div>
+		<div class="particle particle-9"></div>
+		<div class="particle particle-10"></div>
+	</div>
+	
+	<!-- Gradient overlays for depth -->
+	<div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl animate-pulse-slow"></div>
+	<div class="absolute bottom-0 right-1/4 w-80 h-80 bg-accent-500/5 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+</div>
+
+<style>
+	.particle {
+		position: absolute;
+		width: 4px;
+		height: 4px;
+		background: linear-gradient(45deg, #3b82f6, #60a5fa);
+		border-radius: 50%;
+		opacity: 0.6;
+		animation: float-particle 20s infinite linear;
+	}
+
+	.particle-1 { left: 10%; animation-delay: 0s; animation-duration: 25s; }
+	.particle-2 { left: 20%; animation-delay: 2s; animation-duration: 30s; }
+	.particle-3 { left: 30%; animation-delay: 4s; animation-duration: 22s; }
+	.particle-4 { left: 40%; animation-delay: 1s; animation-duration: 28s; }
+	.particle-5 { left: 50%; animation-delay: 6s; animation-duration: 24s; }
+	.particle-6 { left: 60%; animation-delay: 3s; animation-duration: 26s; }
+	.particle-7 { left: 70%; animation-delay: 7s; animation-duration: 32s; }
+	.particle-8 { left: 80%; animation-delay: 5s; animation-duration: 20s; }
+	.particle-9 { left: 90%; animation-delay: 8s; animation-duration: 35s; }
+	.particle-10 { left: 15%; animation-delay: 9s; animation-duration: 18s; }
+
+	@keyframes float-particle {
+		0% {
+			transform: translateY(100vh) translateX(0px) rotate(0deg);
+			opacity: 0;
+		}
+		10% {
+			opacity: 0.6;
+		}
+		90% {
+			opacity: 0.6;
+		}
+		100% {
+			transform: translateY(-100px) translateX(50px) rotate(360deg);
+			opacity: 0;
+		}
+	}
+
+	/* Responsive adjustments */
+	@media (max-width: 768px) {
+		.particle {
+			width: 2px;
+			height: 2px;
+			opacity: 0.4;
+		}
+	}
+
+	/* Reduced motion support */
+	@media (prefers-reduced-motion: reduce) {
+		.particle {
+			animation: none;
+		}
+		
+		.animate-pulse-slow {
+			animation: none;
+		}
+	}
+</style>

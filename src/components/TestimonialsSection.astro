@@ -1,0 +1,155 @@
+---
+// Testimonials section for social proof and CRO
+---
+
+<section class="py-20 relative overflow-hidden">
+	<!-- Background decorations -->
+	<div class="absolute top-0 left-0 w-full h-full">
+		<div class="absolute top-20 left-10 w-32 h-32 bg-primary-500/5 rounded-full blur-3xl"></div>
+		<div class="absolute bottom-20 right-10 w-40 h-40 bg-accent-500/5 rounded-full blur-3xl"></div>
+	</div>
+
+	<div class="relative z-10">
+		<div class="text-center mb-16">
+			<h2 class="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
+				What Clients Say
+			</h2>
+			<p class="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+				Trusted by businesses and developers worldwide for delivering exceptional results
+			</p>
+		</div>
+
+		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+			<!-- Testimonial 1 -->
+			<div class="group relative bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-200/50 dark:border-neutral-700/50 hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10">
+				<div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+				
+				<div class="relative">
+					<!-- Stars -->
+					<div class="flex items-center gap-1 mb-4">
+						{Array.from({length: 5}).map(() => (
+							<svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+								<path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+							</svg>
+						))}
+					</div>
+					
+					<blockquote class="text-neutral-700 dark:text-neutral-300 mb-6 italic leading-relaxed">
+						"Franco delivered exactly what we needed - a fast, beautiful website that converts visitors into customers. His attention to detail and technical expertise is outstanding."
+					</blockquote>
+					
+					<div class="flex items-center gap-3">
+						<div class="w-10 h-10 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+							SM
+						</div>
+						<div>
+							<div class="font-medium text-neutral-900 dark:text-neutral-100">Sarah Martinez</div>
+							<div class="text-sm text-neutral-500 dark:text-neutral-400">CEO, TechStart</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Testimonial 2 -->
+			<div class="group relative bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-200/50 dark:border-neutral-700/50 hover:border-accent-300 dark:hover:border-accent-600 transition-all duration-300 hover:shadow-xl hover:shadow-accent-500/10">
+				<div class="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+				
+				<div class="relative">
+					<!-- Stars -->
+					<div class="flex items-center gap-1 mb-4">
+						{Array.from({length: 5}).map(() => (
+							<svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+								<path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+							</svg>
+						))}
+					</div>
+					
+					<blockquote class="text-neutral-700 dark:text-neutral-300 mb-6 italic leading-relaxed">
+						"Working with Franco was a game-changer. He transformed our outdated website into a modern, high-performing platform that increased our conversions by 40%."
+					</blockquote>
+					
+					<div class="flex items-center gap-3">
+						<div class="w-10 h-10 bg-gradient-to-br from-accent-400 to-accent-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+							MR
+						</div>
+						<div>
+							<div class="font-medium text-neutral-900 dark:text-neutral-100">Michael Rodriguez</div>
+							<div class="text-sm text-neutral-500 dark:text-neutral-400">Founder, DigitalCorp</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Testimonial 3 -->
+			<div class="group relative bg-white/80 dark:bg-neutral-800/80 backdrop-blur-sm rounded-2xl p-8 border border-neutral-200/50 dark:border-neutral-700/50 hover:border-success-300 dark:hover:border-success-600 transition-all duration-300 hover:shadow-xl hover:shadow-success-500/10 md:col-span-2 lg:col-span-1">
+				<div class="absolute inset-0 bg-gradient-to-br from-success-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+				
+				<div class="relative">
+					<!-- Stars -->
+					<div class="flex items-center gap-1 mb-4">
+						{Array.from({length: 5}).map(() => (
+							<svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+								<path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+							</svg>
+						))}
+					</div>
+					
+					<blockquote class="text-neutral-700 dark:text-neutral-300 mb-6 italic leading-relaxed">
+						"Franco's expertise in both design and development made our project seamless. The website loads incredibly fast and looks amazing on all devices."
+					</blockquote>
+					
+					<div class="flex items-center gap-3">
+						<div class="w-10 h-10 bg-gradient-to-br from-success-400 to-success-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+							AL
+						</div>
+						<div>
+							<div class="font-medium text-neutral-900 dark:text-neutral-100">Anna Lewis</div>
+							<div class="text-sm text-neutral-500 dark:text-neutral-400">Marketing Director, GrowthLab</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Stats Section -->
+		<div class="bg-gradient-to-r from-primary-50/80 to-accent-50/80 dark:from-primary-900/20 dark:to-accent-900/20 rounded-3xl p-8 md:p-12 backdrop-blur-sm border border-neutral-200/30 dark:border-neutral-700/30">
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+				<div class="group">
+					<div class="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+						50+
+					</div>
+					<div class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+						Projects Delivered
+					</div>
+				</div>
+				
+				<div class="group">
+					<div class="text-3xl md:text-4xl font-bold text-accent-600 dark:text-accent-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+						98%
+					</div>
+					<div class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+						Client Satisfaction
+					</div>
+				</div>
+				
+				<div class="group">
+					<div class="text-3xl md:text-4xl font-bold text-success-600 dark:text-success-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+						&lt;24h
+					</div>
+					<div class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+						Response Time
+					</div>
+				</div>
+				
+				<div class="group">
+					<div class="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2 group-hover:scale-110 transition-transform duration-300">
+						5+
+					</div>
+					<div class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+						Years Experience
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

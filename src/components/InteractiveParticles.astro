@@ -1,0 +1,174 @@
+---
+// Interactive particles background using Three.js for CRO optimization
+---
+
+<canvas id="particles-canvas" class="fixed inset-0 z-0 pointer-events-none"></canvas>
+
+<script>
+	import * as THREE from 'three'
+
+	class InteractiveParticles {
+		private scene: THREE.Scene
+		private camera: THREE.PerspectiveCamera
+		private renderer: THREE.WebGLRenderer
+		private particles: THREE.Points
+		private mouse = new THREE.Vector2()
+		private mouseInfluence = new THREE.Vector2()
+		private particleCount = 50
+		private particlePositions!: Float32Array
+		private originalPositions!: Float32Array
+
+		constructor(canvas: HTMLCanvasElement) {
+			this.init(canvas)
+			this.createParticles()
+			this.setupEventListeners()
+			this.animate()
+		}
+
+		private init(canvas: HTMLCanvasElement) {
+			// Scene setup
+			this.scene = new THREE.Scene()
+			
+			// Camera setup
+			this.camera = new THREE.PerspectiveCamera(
+				75,
+				window.innerWidth / window.innerHeight,
+				0.1,
+				1000
+			)
+			this.camera.position.z = 100
+
+			// Renderer setup
+			this.renderer = new THREE.WebGLRenderer({
+				canvas,
+				alpha: true,
+				antialias: true,
+			})
+			this.renderer.setSize(window.innerWidth, window.innerHeight)
+			this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+		}
+
+		private createParticles() {
+			const geometry = new THREE.BufferGeometry()
+			
+			this.particlePositions = new Float32Array(this.particleCount * 3)
+			this.originalPositions = new Float32Array(this.particleCount * 3)
+			
+			// Create particle positions
+			for (let i = 0; i < this.particleCount; i++) {
+				const x = (Math.random() - 0.5) * 200
+				const y = (Math.random() - 0.5) * 200
+				const z = (Math.random() - 0.5) * 100
+				
+				this.particlePositions[i * 3] = x
+				this.particlePositions[i * 3 + 1] = y
+				this.particlePositions[i * 3 + 2] = z
+				
+				this.originalPositions[i * 3] = x
+				this.originalPositions[i * 3 + 1] = y
+				this.originalPositions[i * 3 + 2] = z
+			}
+
+			geometry.setAttribute('position', new THREE.BufferAttribute(this.particlePositions, 3))
+
+			// Particle material with CRO-optimized colors
+			const material = new THREE.PointsMaterial({
+				color: new THREE.Color('#3b82f6'), // Primary blue
+				size: 2,
+				transparent: true,
+				opacity: 0.6,
+				blending: THREE.AdditiveBlending,
+			})
+
+			this.particles = new THREE.Points(geometry, material)
+			this.scene.add(this.particles)
+		}
+
+		private setupEventListeners() {
+			// Mouse movement for interaction
+			window.addEventListener('mousemove', (event) => {
+				this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+				this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+			})
+
+			// Resize handler
+			window.addEventListener('resize', () => {
+				this.camera.aspect = window.innerWidth / window.innerHeight
+				this.camera.updateProjectionMatrix()
+				this.renderer.setSize(window.innerWidth, window.innerHeight)
+			})
+
+			// Intersection observer for performance
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) {
+						// Pause animation when not visible
+						this.renderer.setAnimationLoop(null)
+					} else {
+						this.animate()
+					}
+				})
+			})
+			observer.observe(this.renderer.domElement)
+		}
+
+		private animate = () => {
+			// Smooth mouse influence
+			this.mouseInfluence.x += (this.mouse.x * 50 - this.mouseInfluence.x) * 0.05
+			this.mouseInfluence.y += (this.mouse.y * 50 - this.mouseInfluence.y) * 0.05
+
+			// Update particle positions
+			const positions = this.particles.geometry.attributes.position.array as Float32Array
+			
+			for (let i = 0; i < this.particleCount; i++) {
+				const i3 = i * 3
+				
+				// Distance from mouse influence
+				const dx = positions[i3] - this.mouseInfluence.x
+				const dy = positions[i3 + 1] - this.mouseInfluence.y
+				const distance = Math.sqrt(dx * dx + dy * dy)
+				
+				// Apply influence
+				const force = Math.max(0, 1 - distance / 100)
+				const repelX = dx / distance * force * 10
+				const repelY = dy / distance * force * 10
+				
+				// Return to original position with influence
+				positions[i3] += (this.originalPositions[i3] + repelX - positions[i3]) * 0.02
+				positions[i3 + 1] += (this.originalPositions[i3 + 1] + repelY - positions[i3 + 1]) * 0.02
+				
+				// Gentle floating motion
+				positions[i3 + 2] = this.originalPositions[i3 + 2] + Math.sin(Date.now() * 0.001 + i) * 5
+			}
+
+			this.particles.geometry.attributes.position.needsUpdate = true
+			
+			// Rotate particles slightly
+			this.particles.rotation.y += 0.002
+
+			this.renderer.render(this.scene, this.camera)
+			requestAnimationFrame(this.animate)
+		}
+
+		public dispose() {
+			this.renderer.dispose()
+			this.particles.geometry.dispose()
+			;(this.particles.material as THREE.Material).dispose()
+		}
+	}
+
+	// Initialize when DOM is loaded
+	document.addEventListener('DOMContentLoaded', () => {
+		const canvas = document.getElementById('particles-canvas') as HTMLCanvasElement
+		if (canvas) {
+			// Check WebGL support
+			const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
+			if (gl) {
+				new InteractiveParticles(canvas)
+			} else {
+				// Fallback: hide canvas if WebGL not supported
+				canvas.style.display = 'none'
+			}
+		}
+	})
+</script>
