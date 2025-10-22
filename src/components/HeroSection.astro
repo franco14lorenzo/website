@@ -5,7 +5,6 @@ import EnhancedCTA from './EnhancedCTA.astro'
 ---
 
 <section class="relative flex flex-col items-start justify-center py-16 min-h-[80vh]">
-	<!-- Profile Image with enhanced styling -->
 	<div class="relative mx-auto mb-8">
 		<div class="absolute inset-0 bg-gradient-to-br from-primary-400 to-accent-500 rounded-full blur-lg opacity-20 scale-110 animate-pulse-slow"></div>
 		<Image
@@ -18,26 +17,21 @@ import EnhancedCTA from './EnhancedCTA.astro'
 			quality="max"
 			draggable={false}
 		/>
-		<!-- Status indicator -->
 		<div class="absolute bottom-2 right-2 w-6 h-6 bg-success-500 border-4 border-neutral-900 rounded-full shadow-lg">
 			<div class="w-full h-full bg-success-400 rounded-full animate-ping"></div>
 		</div>
 	</div>
 
 	<article class="flex w-full flex-col items-center justify-center text-center space-y-6">
-		<!-- Greeting with enhanced styling -->
 		<div class="flex items-center gap-2 text-sm font-medium text-neutral-400 bg-neutral-800/80 px-4 py-2 rounded-full backdrop-blur-sm">
 			<span class="animate-bounce">👋🏻</span>
-			<span>Available for freelance work</span>
-			<div class="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
+			<span>Hello world!</span>
 		</div>
 
-		<!-- Main heading with improved gradient -->
-		<h1 class="mb-4 bg-gradient-to-br from-neutral-100 via-primary-300 to-accent-400 bg-clip-text text-5xl sm:text-6xl font-bold text-transparent leading-tight">
+		<h1 class="mb-4 bg-gradient-to-br from-neutral-100 via-primary-300 to-accent-400 bg-clip-text text-5xl sm:text-6xl font-bold text-transparent leading-tight" style="text-wrap: balance;">
 			Franco Lorenzo
 		</h1>
 
-		<!-- Enhanced subtitle -->
 		<div class="space-y-2">
 			<h2 class="text-2xl sm:text-3xl font-light tracking-wide text-neutral-300">
 				Software Engineer & Frontend Specialist
@@ -52,31 +46,36 @@ import EnhancedCTA from './EnhancedCTA.astro'
 			</div>
 		</div>
 
-		<!-- Value proposition with better structure -->
-		<div class="max-w-[65ch] space-y-4">
-			<p class="text-lg text-neutral-300 font-medium">
-				Specialized in creating <span class="text-primary-400 font-semibold">high-converting</span> web applications with modern technologies.
+		<div class="max-w-[50ch] space-y-4 py-4 text-left sm:text-center mx-auto">
+			<p class="text-lg text-neutral-300 font-medium" style="text-wrap: pretty; hyphens: none;">
+				Frontend Engineer with <span class="text-primary-400 font-semibold">5+ years</span> of experience building scalable web applications and leading development teams.
 			</p>
-			<p class="text-neutral-400 leading-relaxed">
-				I help businesses build scalable products from scratch with a UX-first approach, 
-				focusing on performance, accessibility, and user experience that drives results.
+			<p class="text-neutral-400 leading-relaxed" style="text-wrap: pretty; hyphens: none;">
+				I focus on product development, system architecture design, and complex problem-solving. 
+				Experienced in building from MVP to scale, technical leadership, and driving engineering excellence across diverse business domains.
 			</p>
 		</div>
 
-		<!-- Skills badges -->
-		<div class="flex flex-wrap justify-center gap-2 max-w-lg">
-			{['React', 'Next.js', 'TypeScript', 'Node.js', 'Astro', 'Tailwind CSS'].map((skill) => (
-				<span class="px-3 py-1 text-xs font-medium bg-primary-900/30 text-primary-300 rounded-full border border-primary-800">
-					{skill}
-				</span>
-			))}
+		<div class="space-y-2 text-center">
+			<div class="inline-flex items-center gap-2 text-xs font-medium text-neutral-400 bg-neutral-800/80 px-3 py-1 my-2 rounded-full">
+				<span>⭐ Main Stack</span>
+			</div>
+			<div class="flex flex-wrap justify-center gap-2 max-w-lg mx-auto" aria-label="Preferred stack badges">
+				{['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind CSS'].map((skill) => (
+					<span class="px-3 py-1 text-xs font-medium bg-primary-900/30 text-primary-300 rounded-full border border-primary-800">
+						{skill}
+					</span>
+				))}
+			</div>
+			<p class="text-xs text-neutral-500">
+				(and many more technologies in my toolkit)
+			</p>
 		</div>
 
-		<!-- CTA Section with hierarchy -->
 		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
 			<EnhancedCTA 
 				href="mailto:contacto@francolorenzo.dev"
-				text="Let's Work Together"
+				text="Contact Me"
 				variant="primary"
 			/>
 			<EnhancedCTA 
@@ -88,28 +87,26 @@ import EnhancedCTA from './EnhancedCTA.astro'
 			/>
 		</div>
 
-		<!-- Social proof / metrics -->
-		<div class="flex items-center justify-center gap-8 pt-8 text-sm text-neutral-400">
-			<div class="text-center">
-				<div class="font-bold text-lg text-neutral-300">20+</div>
-				<div>Projects Completed</div>
-			</div>
-			<div class="w-px h-8 bg-neutral-600"></div>
-			<div class="text-center">
-				<div class="font-bold text-lg text-neutral-300">5+</div>
-				<div>Years Experience</div>
-			</div>
-			<div class="w-px h-8 bg-neutral-600"></div>
-			<div class="text-center">
-				<div class="font-bold text-lg text-neutral-300">24h</div>
-				<div>Response Time</div>
+		<div class="pt-8 text-sm text-neutral-400 w-full" aria-label="Professional focus areas">
+			<div class="mx-auto w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 divide-y divide-neutral-700 sm:divide-y-0 sm:divide-x">
+				<div class="text-center px-4 py-2 min-w-0">
+					<div class="font-bold text-lg text-neutral-300" style="text-wrap: balance;">Architecture</div>
+					<p class="mt-1">Scalable systems, ownership, clarity</p>
+				</div>
+				<div class="text-center px-4 py-2 min-w-0">
+					<div class="font-bold text-lg text-neutral-300" style="text-wrap: balance;">Product Impact</div>
+					<p class="mt-1">Discovery → delivery, outcomes</p>
+				</div>
+				<div class="text-center px-4 py-2 min-w-0">
+					<div class="font-bold text-lg text-neutral-300" style="text-wrap: balance;">Engineering Excellence</div>
+					<p class="mt-1">Quality, DX, mentoring</p>
+				</div>
 			</div>
 		</div>
 	</article>
 </section>
 
 <style>
-	/* Custom animations for hero elements */
 	section {
 		animation: fadeInUp 1s ease-out;
 	}
@@ -125,7 +122,6 @@ import EnhancedCTA from './EnhancedCTA.astro'
 		}
 	}
 
-	/* Staggered animation for child elements */
 	article > * {
 		animation: fadeInUp 0.8s ease-out backwards;
 	}

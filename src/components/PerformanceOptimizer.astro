@@ -182,63 +182,10 @@ class LazyAnimationManager {
 	}
 }
 
-// Web Vitals monitoring for CRO analytics
-class WebVitalsMonitor {
-	private metrics: { [key: string]: number } = {}
-
-	constructor() {
-		this.setupWebVitalsMonitoring()
-	}
-
-	private setupWebVitalsMonitoring(): void {
-		// Largest Contentful Paint
-		new PerformanceObserver((entryList) => {
-			const entries = entryList.getEntries()
-			const lastEntry = entries[entries.length - 1]
-			this.metrics.lcp = lastEntry.startTime
-		}).observe({ entryTypes: ['largest-contentful-paint'] })
-
-		// First Input Delay
-		new PerformanceObserver((entryList) => {
-			const firstInput = entryList.getEntries()[0] as any
-			if (firstInput && firstInput.processingStart) {
-				this.metrics.fid = firstInput.processingStart - firstInput.startTime
-			}
-		}).observe({ entryTypes: ['first-input'], buffered: true })
-
-		// Cumulative Layout Shift
-		new PerformanceObserver((entryList) => {
-			let clsValue = 0
-			entryList.getEntries().forEach((entry: any) => {
-				if (!entry.hadRecentInput) {
-					clsValue += entry.value
-				}
-			})
-			this.metrics.cls = clsValue
-		}).observe({ entryTypes: ['layout-shift'], buffered: true })
-
-		// Report metrics after page load
-		window.addEventListener('load', () => {
-			setTimeout(() => {
-				this.reportMetrics()
-			}, 3000)
-		})
-	}
-
-	private reportMetrics(): void {
-		// You can send these metrics to your analytics service
-		console.log('Web Vitals:', this.metrics)
-		
-		// Example: Send to analytics
-		// analytics.track('web_vitals', this.metrics)
-	}
-}
-
 // Initialize performance optimizations
 document.addEventListener('DOMContentLoaded', () => {
 	const performanceManager = PerformanceManager.getInstance()
 	const lazyAnimationManager = new LazyAnimationManager()
-	const webVitalsMonitor = new WebVitalsMonitor()
 
 	// Cleanup on page unload
 	window.addEventListener('beforeunload', () => {
