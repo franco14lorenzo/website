@@ -19,30 +19,30 @@ import EnhancedCTA from './EnhancedCTA.astro'
 			draggable={false}
 		/>
 		<!-- Status indicator -->
-		<div class="absolute bottom-2 right-2 w-6 h-6 bg-success-500 border-4 border-white dark:border-neutral-900 rounded-full shadow-lg">
+		<div class="absolute bottom-2 right-2 w-6 h-6 bg-success-500 border-4 border-neutral-900 rounded-full shadow-lg">
 			<div class="w-full h-full bg-success-400 rounded-full animate-ping"></div>
 		</div>
 	</div>
 
 	<article class="flex w-full flex-col items-center justify-center text-center space-y-6">
 		<!-- Greeting with enhanced styling -->
-		<div class="flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 bg-neutral-100/80 dark:bg-neutral-800/80 px-4 py-2 rounded-full backdrop-blur-sm">
+		<div class="flex items-center gap-2 text-sm font-medium text-neutral-400 bg-neutral-800/80 px-4 py-2 rounded-full backdrop-blur-sm">
 			<span class="animate-bounce">👋🏻</span>
 			<span>Available for freelance work</span>
 			<div class="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
 		</div>
 
 		<!-- Main heading with improved gradient -->
-		<h1 class="mb-4 bg-gradient-to-br from-neutral-900 via-primary-700 to-accent-600 dark:from-neutral-100 dark:via-primary-300 dark:to-accent-400 bg-clip-text text-5xl sm:text-6xl font-bold text-transparent leading-tight">
+		<h1 class="mb-4 bg-gradient-to-br from-neutral-100 via-primary-300 to-accent-400 bg-clip-text text-5xl sm:text-6xl font-bold text-transparent leading-tight">
 			Franco Lorenzo
 		</h1>
 
 		<!-- Enhanced subtitle -->
 		<div class="space-y-2">
-			<h2 class="text-2xl sm:text-3xl font-light tracking-wide text-neutral-700 dark:text-neutral-300">
+			<h2 class="text-2xl sm:text-3xl font-light tracking-wide text-neutral-300">
 				Software Engineer & Frontend Specialist
 			</h2>
-			<div class="flex items-center justify-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
+			<div class="flex items-center justify-center gap-2 text-sm text-neutral-400">
 				<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
 					<path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
 				</svg>
@@ -54,10 +54,10 @@ import EnhancedCTA from './EnhancedCTA.astro'
 
 		<!-- Value proposition with better structure -->
 		<div class="max-w-[65ch] space-y-4">
-			<p class="text-lg text-neutral-600 dark:text-neutral-300 font-medium">
-				Specialized in creating <span class="text-primary-600 dark:text-primary-400 font-semibold">high-converting</span> web applications with modern technologies.
+			<p class="text-lg text-neutral-300 font-medium">
+				Specialized in creating <span class="text-primary-400 font-semibold">high-converting</span> web applications with modern technologies.
 			</p>
-			<p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+			<p class="text-neutral-400 leading-relaxed">
 				I help businesses build scalable products from scratch with a UX-first approach, 
 				focusing on performance, accessibility, and user experience that drives results.
 			</p>
@@ -66,7 +66,7 @@ import EnhancedCTA from './EnhancedCTA.astro'
 		<!-- Skills badges -->
 		<div class="flex flex-wrap justify-center gap-2 max-w-lg">
 			{['React', 'Next.js', 'TypeScript', 'Node.js', 'Astro', 'Tailwind CSS'].map((skill) => (
-				<span class="px-3 py-1 text-xs font-medium bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full border border-primary-200 dark:border-primary-800">
+				<span class="px-3 py-1 text-xs font-medium bg-primary-900/30 text-primary-300 rounded-full border border-primary-800">
 					{skill}
 				</span>
 			))}
@@ -89,19 +89,19 @@ import EnhancedCTA from './EnhancedCTA.astro'
 		</div>
 
 		<!-- Social proof / metrics -->
-		<div class="flex items-center justify-center gap-8 pt-8 text-sm text-neutral-500 dark:text-neutral-400">
+		<div class="flex items-center justify-center gap-8 pt-8 text-sm text-neutral-400">
 			<div class="text-center">
-				<div class="font-bold text-lg text-neutral-700 dark:text-neutral-300">50+</div>
+				<div class="font-bold text-lg text-neutral-300">20+</div>
 				<div>Projects Completed</div>
 			</div>
-			<div class="w-px h-8 bg-neutral-300 dark:bg-neutral-600"></div>
+			<div class="w-px h-8 bg-neutral-600"></div>
 			<div class="text-center">
-				<div class="font-bold text-lg text-neutral-700 dark:text-neutral-300">5+</div>
+				<div class="font-bold text-lg text-neutral-300">5+</div>
 				<div>Years Experience</div>
 			</div>
-			<div class="w-px h-8 bg-neutral-300 dark:bg-neutral-600"></div>
+			<div class="w-px h-8 bg-neutral-600"></div>
 			<div class="text-center">
-				<div class="font-bold text-lg text-neutral-700 dark:text-neutral-300">24h</div>
+				<div class="font-bold text-lg text-neutral-300">24h</div>
 				<div>Response Time</div>
 			</div>
 		</div>
