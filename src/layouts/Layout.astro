@@ -3,6 +3,8 @@ import '@fontsource-variable/outfit';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import AnimatedBackground from '../components/AnimatedBackground.astro'
+import PerformanceOptimizer from '../components/PerformanceOptimizer.astro'
 ---
 
 <!DOCTYPE html>
@@ -10,11 +12,15 @@ import Footer from '../components/Footer.astro'
 	<head>
 		<BaseHead title='Franco Lorenzo | Website' description='Full Stack Developer from Argentina' />
 	</head>
-	<body class="font-sans bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100 container mx-auto max-w-4xl px-4 flex flex-col bg-dotted-gray-200 dark:bg-dotted-gray-50/10 bg-dotted-spacing-6">
+	<body class="font-sans bg-neutral-900 text-neutral-100 min-h-screen flex flex-col relative overflow-x-hidden">
+		<AnimatedBackground />
 		<Header />
-		<main class="container mx-auto max-w-4xl p-4 pt-20">
-		<slot />
+		<main class="flex-1 pt-20 relative z-10">
+			<div class="container mx-auto max-w-4xl px-4">
+				<slot />
+			</div>
 		</main>
 		<Footer />
+		<PerformanceOptimizer />
 	</body>
 </html>

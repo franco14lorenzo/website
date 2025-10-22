@@ -1,0 +1,242 @@
+---
+// Performance optimization script for WebGL and animations
+---
+
+<script>
+// Performance monitoring and optimization
+class PerformanceManager {
+	private static instance: PerformanceManager
+	private isReducedMotion: boolean = false
+	private isLowPerformance: boolean = false
+	private animationFrameId: number | null = null
+
+	constructor() {
+		this.checkPerformancePreferences()
+		this.setupPerformanceMonitoring()
+		this.optimizeAnimations()
+	}
+
+	static getInstance(): PerformanceManager {
+		if (!PerformanceManager.instance) {
+			PerformanceManager.instance = new PerformanceManager()
+		}
+		return PerformanceManager.instance
+	}
+
+	private checkPerformancePreferences(): void {
+		// Check for reduced motion preference
+		this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+		// Check device performance indicators
+		const connection = (navigator as any).connection
+		if (connection) {
+			// Slow connection = reduce animations
+			this.isLowPerformance = connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g'
+		}
+
+		// Check device memory (if available)
+		const deviceMemory = (navigator as any).deviceMemory
+		if (deviceMemory && deviceMemory < 4) {
+			this.isLowPerformance = true
+		}
+
+		// Check for mobile devices
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+			this.isLowPerformance = true
+		}
+	}
+
+	private setupPerformanceMonitoring(): void {
+		// Monitor FPS
+		let lastTime = performance.now()
+		let frameCount = 0
+		let fps = 60
+
+		const measureFPS = (currentTime: number) => {
+			frameCount++
+			
+			if (currentTime >= lastTime + 1000) {
+				fps = Math.round((frameCount * 1000) / (currentTime - lastTime))
+				frameCount = 0
+				lastTime = currentTime
+
+				// If FPS drops below 30, enable performance mode
+				if (fps < 30 && !this.isLowPerformance) {
+					this.isLowPerformance = true
+					this.optimizeForLowPerformance()
+				}
+			}
+
+			this.animationFrameId = requestAnimationFrame(measureFPS)
+		}
+
+		// Start monitoring only if animations are enabled
+		if (!this.isReducedMotion) {
+			this.animationFrameId = requestAnimationFrame(measureFPS)
+		}
+	}
+
+	private optimizeAnimations(): void {
+		if (this.isReducedMotion) {
+			// Disable all animations
+			document.documentElement.style.setProperty('--animation-duration', '0s')
+			document.documentElement.style.setProperty('--transition-duration', '0s')
+			
+			// Hide particle backgrounds
+			const particles = document.querySelectorAll('.particle')
+			particles.forEach(particle => {
+				;(particle as HTMLElement).style.display = 'none'
+			})
+		} else if (this.isLowPerformance) {
+			this.optimizeForLowPerformance()
+		}
+	}
+
+	private optimizeForLowPerformance(): void {
+		// Reduce animation complexity
+		document.documentElement.style.setProperty('--animation-duration', '1s')
+		document.documentElement.style.setProperty('--transition-duration', '0.2s')
+
+		// Reduce particle count
+		const particles = document.querySelectorAll('.particle')
+		particles.forEach((particle, index) => {
+			if (index > 4) { // Keep only first 5 particles
+				;(particle as HTMLElement).style.display = 'none'
+			}
+		})
+
+		// Disable blur effects
+		const blurElements = document.querySelectorAll('[class*="blur"]')
+		blurElements.forEach(element => {
+			;(element as HTMLElement).style.filter = 'none'
+		})
+
+		// Reduce opacity of decorative elements
+		const decorativeElements = document.querySelectorAll('[class*="opacity-"]')
+		decorativeElements.forEach(element => {
+			;(element as HTMLElement).style.opacity = '0.3'
+		})
+	}
+
+	public cleanup(): void {
+		if (this.animationFrameId) {
+			cancelAnimationFrame(this.animationFrameId)
+		}
+	}
+}
+
+// Intersection Observer for lazy loading animations
+class LazyAnimationManager {
+	private observer: IntersectionObserver | null = null
+
+	constructor() {
+		this.setupIntersectionObserver()
+	}
+
+	private setupIntersectionObserver(): void {
+		const options = {
+			root: null,
+			rootMargin: '50px',
+			threshold: 0.1
+		}
+
+		this.observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					this.activateAnimations(entry.target as HTMLElement)
+				} else {
+					this.deactivateAnimations(entry.target as HTMLElement)
+				}
+			})
+		}, options)
+
+		// Observe animated sections
+		const animatedSections = document.querySelectorAll('section, .animate-on-scroll')
+		animatedSections.forEach(section => {
+			this.observer?.observe(section)
+		})
+	}
+
+	private activateAnimations(element: HTMLElement): void {
+		element.style.animationPlayState = 'running'
+		
+		// Activate child animations
+		const childAnimations = element.querySelectorAll('[class*="animate-"]')
+		childAnimations.forEach(child => {
+			;(child as HTMLElement).style.animationPlayState = 'running'
+		})
+	}
+
+	private deactivateAnimations(element: HTMLElement): void {
+		// Pause animations when out of view to save performance
+		element.style.animationPlayState = 'paused'
+		
+		const childAnimations = element.querySelectorAll('[class*="animate-"]')
+		childAnimations.forEach(child => {
+			;(child as HTMLElement).style.animationPlayState = 'paused'
+		})
+	}
+
+	public cleanup(): void {
+		this.observer?.disconnect()
+	}
+}
+
+// Initialize performance optimizations
+document.addEventListener('DOMContentLoaded', () => {
+	const performanceManager = PerformanceManager.getInstance()
+	const lazyAnimationManager = new LazyAnimationManager()
+
+	// Cleanup on page unload
+	window.addEventListener('beforeunload', () => {
+		performanceManager.cleanup()
+		lazyAnimationManager.cleanup()
+	})
+})
+</script>
+
+<style>
+	/* CSS Custom Properties for dynamic performance adjustments */
+	:root {
+		--animation-duration: 0.8s;
+		--transition-duration: 0.3s;
+	}
+
+	/* Override animation durations based on performance */
+	* {
+		animation-duration: var(--animation-duration) !important;
+		transition-duration: var(--transition-duration) !important;
+	}
+
+	/* Pause animations by default, activate with Intersection Observer */
+	.animate-on-scroll * {
+		animation-play-state: paused;
+	}
+
+	/* Reduced motion styles */
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+		
+		.particle,
+		.animate-float,
+		.animate-pulse-slow {
+			display: none !important;
+		}
+	}
+
+	/* High contrast mode support */
+	@media (prefers-contrast: high) {
+		.bg-gradient-to-r,
+		.bg-gradient-to-br,
+		.bg-gradient-to-b {
+			background: var(--tw-gradient-stops) !important;
+		}
+	}
+</style>

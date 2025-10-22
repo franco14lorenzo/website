@@ -1,53 +1,136 @@
 ---
 import { Image } from 'astro:assets'
 import franco from '../assets/images/franco.webp'
+import EnhancedCTA from './EnhancedCTA.astro'
 ---
 
-<section class="flex flex-col items-start justify-center py-16">
-	<Image
-		src={franco}
-		alt="A picture of Franco Lorenzo"
-		class="mx-auto h-32 w-32 overflow-hidden rounded-full"
-		width="256"
-		height="256"
-		loading="eager"
-		quality="max"
-		draggable="false"
-	/>
+<section class="relative flex flex-col items-start justify-center py-16 min-h-[80vh]">
+	<div class="relative mx-auto mb-8">
+		<div class="absolute inset-0 bg-gradient-to-br from-primary-400 to-accent-500 rounded-full blur-lg opacity-20 scale-110 animate-pulse-slow"></div>
+		<Image
+			src={franco}
+			alt="Franco Lorenzo Profile Picture"
+			class="relative h-32 w-32 overflow-hidden rounded-full border-4 border-white/20 shadow-2xl object-cover"
+			width={256}
+			height={256}
+			loading="eager"
+			quality="max"
+			draggable={false}
+		/>
+		<div class="absolute bottom-2 right-2 w-6 h-6 bg-success-500 border-4 border-neutral-900 rounded-full shadow-lg">
+			<div class="w-full h-full bg-success-400 rounded-full animate-ping"></div>
+		</div>
+	</div>
 
-	<article class="my-4 flex w-full flex-col items-center justify-center text-center">
-		<p class="mb-2 py-1 text-sm font-light">Hello world! 👋🏻</p>
-		<h1
-			class="mb-4 bg-gradient-to-b from-gray-900 to-gray-600 bg-clip-text text-5xl font-bold text-transparent dark:from-gray-100 dark:to-gray-400"
-		>
-			I'm Franco Lorenzo
+	<article class="flex w-full flex-col items-center justify-center text-center space-y-6">
+		<div class="flex items-center gap-2 text-sm font-medium text-neutral-400 bg-neutral-800/80 px-4 py-2 rounded-full backdrop-blur-sm">
+			<span class="animate-bounce">👋🏻</span>
+			<span>Hello world!</span>
+		</div>
+
+		<h1 class="mb-4 bg-gradient-to-br from-neutral-100 via-primary-300 to-accent-400 bg-clip-text text-5xl sm:text-6xl font-bold text-transparent leading-tight" style="text-wrap: balance;">
+			Franco Lorenzo
 		</h1>
-		<h2 class="mb-8 py-3 text-2xl font-light tracking-widest">Frontend Engineer</h2>
-		<p class="mb-8 max-w-[60ch] text-gray-600 dark:text-gray-400" style="text-wrap: balance;">
-			I'm passionate about creating products from scratch with a UX-first approach and writing
-			clean, maintainable, and scalable code. I'm always eager to explore new technologies and stay
-			up-to-date with the latest trends in the field.
-		</p>
-		<a
-			href="https://github.com/franco14lorenzo?tab=repositories"
-			target="_blank"
-			class="mt-4 flex items-center justify-center gap-2 rounded-md border border-gray-200 bg-gray-50 px-8 py-4 transition-all hover:underline hover:brightness-200 dark:border-gray-50/10 dark:bg-gray-800"
-		>
-			<span class="font-light">Latest projects</span>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="h-5 w-5"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-				></path>
-			</svg>
-		</a>
+
+		<div class="space-y-2">
+			<h2 class="text-2xl sm:text-3xl font-light tracking-wide text-neutral-300">
+				Software Engineer & Frontend Specialist
+			</h2>
+			<div class="flex items-center justify-center gap-2 text-sm text-neutral-400">
+				<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+					<path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+				</svg>
+				<span>Argentina</span>
+				<span>•</span>
+				<span>Remote Work Available</span>
+			</div>
+		</div>
+
+		<div class="max-w-[50ch] space-y-4 py-4 text-left sm:text-center mx-auto">
+			<p class="text-lg text-neutral-300 font-medium" style="text-wrap: pretty; hyphens: none;">
+				Frontend Engineer with <span class="text-primary-400 font-semibold">5+ years</span> of experience building scalable web applications and leading development teams.
+			</p>
+			<p class="text-neutral-400 leading-relaxed" style="text-wrap: pretty; hyphens: none;">
+				I focus on product development, system architecture design, and complex problem-solving. 
+				Experienced in building from MVP to scale, technical leadership, and driving engineering excellence across diverse business domains.
+			</p>
+		</div>
+
+		<div class="space-y-2 text-center">
+			<div class="inline-flex items-center gap-2 text-xs font-medium text-neutral-400 bg-neutral-800/80 px-3 py-1 my-2 rounded-full">
+				<span>⭐ Main Stack</span>
+			</div>
+			<div class="flex flex-wrap justify-center gap-2 max-w-lg mx-auto" aria-label="Preferred stack badges">
+				{['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind CSS'].map((skill) => (
+					<span class="px-3 py-1 text-xs font-medium bg-primary-900/30 text-primary-300 rounded-full border border-primary-800">
+						{skill}
+					</span>
+				))}
+			</div>
+			<p class="text-xs text-neutral-500">
+				(and many more technologies in my toolkit)
+			</p>
+		</div>
+
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+			<EnhancedCTA 
+				href="mailto:contacto@francolorenzo.dev"
+				text="Contact Me"
+				variant="primary"
+			/>
+			<EnhancedCTA 
+				href="https://github.com/franco14lorenzo?tab=repositories"
+				text="View Projects"
+				variant="secondary"
+				external={true}
+				icon={true}
+			/>
+		</div>
+
+		<div class="pt-8 text-sm text-neutral-400 w-full" aria-label="Professional focus areas">
+			<div class="mx-auto w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 divide-y divide-neutral-700 sm:divide-y-0 sm:divide-x">
+				<div class="text-center px-4 py-2 min-w-0">
+					<div class="font-bold text-lg text-neutral-300" style="text-wrap: balance;">Architecture</div>
+					<p class="mt-1">Scalable systems, ownership, clarity</p>
+				</div>
+				<div class="text-center px-4 py-2 min-w-0">
+					<div class="font-bold text-lg text-neutral-300" style="text-wrap: balance;">Product Impact</div>
+					<p class="mt-1">Discovery → delivery, outcomes</p>
+				</div>
+				<div class="text-center px-4 py-2 min-w-0">
+					<div class="font-bold text-lg text-neutral-300" style="text-wrap: balance;">Engineering Excellence</div>
+					<p class="mt-1">Quality, DX, mentoring</p>
+				</div>
+			</div>
+		</div>
 	</article>
 </section>
+
+<style>
+	section {
+		animation: fadeInUp 1s ease-out;
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	article > * {
+		animation: fadeInUp 0.8s ease-out backwards;
+	}
+
+	article > *:nth-child(1) { animation-delay: 0.1s; }
+	article > *:nth-child(2) { animation-delay: 0.2s; }
+	article > *:nth-child(3) { animation-delay: 0.3s; }
+	article > *:nth-child(4) { animation-delay: 0.4s; }
+	article > *:nth-child(5) { animation-delay: 0.5s; }
+	article > *:nth-child(6) { animation-delay: 0.6s; }
+	article > *:nth-child(7) { animation-delay: 0.7s; }
+</style>
