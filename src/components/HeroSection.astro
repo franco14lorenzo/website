@@ -34,74 +34,40 @@ import EnhancedCTA from './EnhancedCTA.astro'
 
 		<div class="space-y-2">
 			<h2 class="text-2xl sm:text-3xl font-light tracking-wide text-neutral-300">
-				Software Engineer & Frontend Specialist
+				Software Engineer <span>•</span> Frontend Specialist
 			</h2>
 			<div class="flex items-center justify-center gap-2 text-sm text-neutral-400">
 				<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
 					<path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
 				</svg>
 				<span>Argentina</span>
-				<span>•</span>
-				<span>Remote Work Available</span>
 			</div>
 		</div>
 
-		<div class="max-w-[50ch] space-y-4 py-4 text-left sm:text-center mx-auto">
-			<p class="text-lg text-neutral-300 font-medium" style="text-wrap: pretty; hyphens: none;">
-				Frontend Engineer with <span class="text-primary-400 font-semibold">5+ years</span> of experience building scalable web applications and leading development teams.
+		<div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-4 py-4 text-left">
+			<p class="text-lg text-neutral-300 font-medium leading-relaxed" style="text-wrap: pretty;">
+				Hi there! I'm Franco. I'm passionate about building products from the ground up, prioritizing user experience and developing scalable and robust technical solutions.
 			</p>
-			<p class="text-neutral-400 leading-relaxed" style="text-wrap: pretty; hyphens: none;">
-				I focus on product development, system architecture design, and complex problem-solving. 
-				Experienced in building from MVP to scale, technical leadership, and driving engineering excellence across diverse business domains.
-			</p>
-		</div>
-
-		<div class="space-y-2 text-center">
-			<div class="inline-flex items-center gap-2 text-xs font-medium text-neutral-400 bg-neutral-800/80 px-3 py-1 my-2 rounded-full">
-				<span>⭐ Main Stack</span>
-			</div>
-			<div class="flex flex-wrap justify-center gap-2 max-w-lg mx-auto" aria-label="Preferred stack badges">
-				{['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind CSS'].map((skill) => (
-					<span class="px-3 py-1 text-xs font-medium bg-primary-900/30 text-primary-300 rounded-full border border-primary-800">
-						{skill}
-					</span>
-				))}
-			</div>
-			<p class="text-xs text-neutral-500">
-				(and many more technologies in my toolkit)
+			<p class="text-neutral-400 leading-relaxed" style="text-wrap: pretty;">
+				My specialty is front-end, though I enjoy working on back-end tasks too. I'm always exploring new technologies and keeping up with the latest trends in product development.
 			</p>
 		</div>
 
 		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
 			<EnhancedCTA 
 				href="mailto:contacto@francolorenzo.dev"
-				text="Contact Me"
+				text="Let's Connect"
 				variant="primary"
+				class="w-full sm:w-52"
 			/>
 			<EnhancedCTA 
 				href="https://github.com/franco14lorenzo?tab=repositories"
-				text="View Projects"
+				text="Check my work"
 				variant="secondary"
 				external={true}
 				icon={true}
+				class="w-full sm:w-52"
 			/>
-		</div>
-
-		<div class="pt-8 text-sm text-neutral-400 w-full" aria-label="Professional focus areas">
-			<div class="mx-auto w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 divide-y divide-neutral-700 sm:divide-y-0 sm:divide-x">
-				<div class="text-center px-4 py-2 min-w-0">
-					<div class="font-bold text-lg text-neutral-300" style="text-wrap: balance;">Architecture</div>
-					<p class="mt-1">Scalable systems, ownership, clarity</p>
-				</div>
-				<div class="text-center px-4 py-2 min-w-0">
-					<div class="font-bold text-lg text-neutral-300" style="text-wrap: balance;">Product Impact</div>
-					<p class="mt-1">Discovery → delivery, outcomes</p>
-				</div>
-				<div class="text-center px-4 py-2 min-w-0">
-					<div class="font-bold text-lg text-neutral-300" style="text-wrap: balance;">Engineering Excellence</div>
-					<p class="mt-1">Quality, DX, mentoring</p>
-				</div>
-			</div>
 		</div>
 	</article>
 </section>
