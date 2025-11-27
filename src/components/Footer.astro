@@ -106,14 +106,46 @@ const currentYear = new Date().getFullYear()
 		</div>
 	</div>
 
-	<div class="relative border-t border-neutral-700/50">
-		<div class="container mx-auto max-w-4xl px-6 py-6">
+	<div class="relative border-t border-neutral-700/50 overflow-hidden">
+		<div class="container mx-auto max-w-4xl px-6 py-6 relative z-10">
 			<div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-neutral-400">
 				<div class="flex items-center gap-3 flex-1 justify-center">
 					<span>© {currentYear} Franco Lorenzo</span>
-					<span class="text-lg animate-float" aria-label="rocket emoji">🚀</span>
+					<span class="text-lg animate-rocket" aria-label="rocket emoji">🚀</span>
 				</div>
 			</div>
 		</div>
 	</div>
 </footer>
+
+<style>
+	.animate-rocket {
+		display: inline-block;
+		animation: rocketFlight 3s ease-in-out infinite;
+		filter: drop-shadow(-3px 3px 8px rgba(251, 146, 60, 0.4)) drop-shadow(-2px 2px 4px rgba(239, 68, 68, 0.3));
+	}
+
+	@keyframes rocketFlight {
+		0%, 100% {
+			transform: translate(0, 0) rotate(-25deg);
+			filter: drop-shadow(-3px 3px 8px rgba(251, 146, 60, 0.4)) drop-shadow(-2px 2px 4px rgba(239, 68, 68, 0.3));
+		}
+		25% {
+			transform: translate(3px, 1px) rotate(-15deg);
+			filter: drop-shadow(-4px 4px 12px rgba(251, 146, 60, 0.6)) drop-shadow(-3px 3px 6px rgba(239, 68, 68, 0.5));
+		}
+		50% {
+			transform: translate(0px, 0px) rotate(-25deg);
+			filter: drop-shadow(-5px 5px 16px rgba(251, 146, 60, 0.7)) drop-shadow(-4px 4px 8px rgba(239, 68, 68, 0.6));
+		}
+		75% {
+			transform: translate(-3px, -1px) rotate(-35deg);
+			filter: drop-shadow(-4px 4px 12px rgba(251, 146, 60, 0.6)) drop-shadow(-3px 3px 6px rgba(239, 68, 68, 0.5));
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.star {
+			animation: none;
+		}
+	}
+</style>
